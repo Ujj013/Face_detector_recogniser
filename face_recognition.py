@@ -12,7 +12,7 @@ font = cv2.FONT_HERSHEY_TRIPLEX
 
 id = 0
 
-names = [0, "Ujjawal sir", 2, 3, 4, 5]
+names = [0, "Ujjawal", 2, 3, 4, 5]
 #put in names here corresponding to the ids you give to the faces!
 cam = cv2.VideoCapture(0)
 cam.set(3, 640)
