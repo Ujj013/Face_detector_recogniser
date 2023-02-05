@@ -3,7 +3,7 @@ import numpy as np
 import os
 
 recogniser = cv2.face.LBPHFaceRecognizer_create()
-recognizer.read('trainer/trainer.yml') #it reads our already trained model!
+recogniser.read('trainer/trainer.yml') #it reads our already trained model!
 cascadePath = "haarcascade_frontalface_default.xml"
 faceCascade = cv2.CascadeClassifier(cascadePath) #this is basically the face detector
 
@@ -12,7 +12,7 @@ font = cv2.FONT_HERSHEY_TRIPLEX
 
 id = 0
 
-names = [0, 1, 2, 3, 4, 5]
+names = [0, "Ujjawal sir", 2, 3, 4, 5]
 #put in names here corresponding to the ids you give to the faces!
 cam = cv2.VideoCapture(0)
 cam.set(3, 640)
@@ -36,7 +36,7 @@ while True:
 
     for (x, y, w, h) in faces:
         cv2.rectangle(img, (x,y), (x+w, y+h), (0, 0, 255), 2)
-        id, confidence = recognizer.predict(gray[y:y+h, x:x+w])
+        id, confidence = recogniser.predict(gray[y:y+h, x:x+w])
         #returns ths id based on the face scanned and its confidence level.
         
         if(confidence < 100):

@@ -10,7 +10,7 @@ detector = cv2.CascadeClassifier("haarcascade_frontalface_default.xml")
 
 def getImagesAndLabels(path):
 
-    imagePaths = [os.path.join(path, f) for in os.listdir(path)]
+    imagePaths = [os.path.join(path, f) for f in os.listdir(path)]
     #it should be for f in ... maybe
     #it joins one or more path components intelligently. So basically an array of paths is created.
     #Each path is of type "path/f" where path is defined above and f is in os.listdir(path)
@@ -38,16 +38,16 @@ def getImagesAndLabels(path):
         #default scalefactor and minneighbours for this are 1.1 and 3.
 
         for (x, y, w, h) in faces:
-            facesamples.append(img.numpy[y:y+h, x:x+w])
+            facesamples.append(img_numpy[y:y+h, x:x+w])
             ids.append(id)
 
-        return facesamples.ids
+        return facesamples, ids
 
 print("\n [INFO] Training faces.....")
 
 faces, ids = getImagesAndLabels(path)
 recogniser.train(faces, np.array(ids))
 
-recognizer.write('trainer/trainer.yml')
+recogniser.write('trainer/trainer.yml')
 
 print("\n [INFO] {0} faces trained.".format(len(np.unique(ids))))
